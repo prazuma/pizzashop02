@@ -35,8 +35,11 @@ public class LinkData {
 	@Persistent
 	private String pay;
 
+	@Persistent
+	private String topping;
+
 	public LinkData(String title, String count, String address, Date datetime,
-			String price, String phone, String haitatsu, String pay) {
+			String price, String phone, String haitatsu, String pay,String toppping) {
 		super();
 		this.title = title;
 		this.count = count;
@@ -46,6 +49,7 @@ public class LinkData {
 		this.phone = phone;
 		this.haitatsu = haitatsu;
 		this.pay = pay;
+		this.topping = topping;
 	}
 
 	public Long getId() {
@@ -118,6 +122,13 @@ public class LinkData {
 
 	public void setPay(String pay) {
 		this.pay = pay;
+	}
+	public String getTopping() {
+		return topping;
+	}
+
+	public void setTopping(String topping) {
+		this.topping = topping;
 	}
 
 }

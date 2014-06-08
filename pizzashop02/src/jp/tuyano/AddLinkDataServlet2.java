@@ -22,10 +22,15 @@ public class AddLinkDataServlet2 extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
+		boolean flag=true;
 		String title = req.getParameter("title");
+		if(title.equals(""))flag=false;
 		String count = req.getParameter("count");
+		if(count.equals(""))flag=false;
 		String day = req.getParameter("day");
+		if(day.equals(""))flag=false;
 		String time1 = req.getParameter("time");
+		if(time1.equals(""))flag=false;
 		String time = day + " " + time1;
 		String ad1 = req.getParameter("eat");
 		String ad2 = req.getParameter("eat2");
@@ -58,20 +63,24 @@ public class AddLinkDataServlet2 extends HttpServlet {
 		Date date = Calendar.getInstance().getTime();
 		String price = req.getParameter("price");
 		String phone = req.getParameter("phone");
+		if(phone.equals(""))flag=false;
 		int price2 = Integer.parseInt(price);
 		int count2 = Integer.parseInt(count);
 		int price3 = 0;
 		price3 = price2 * count2;
 		price = Integer.toString(price3);
-		LinkData2 data2 = new LinkData2(title, count, ad, date, price, phone,
-				time);
-		PersistenceManagerFactory factory = PMF.get();
-		PersistenceManager manager = factory.getPersistenceManager();
-		try {
-			manager.makePersistent(data2);
-		} finally {
-			manager.close();
-		}
-		resp.sendRedirect("/finish.html");
+		if (flag) {
+			LinkData2 data2 = new LinkData2(title, count, ad, date, price,
+					phone, time);
+			PersistenceManagerFactory factory = PMF.get();
+			PersistenceManager manager = factory.getPersistenceManager();
+			try {
+				manager.makePersistent(data2);
+			} finally {
+				manager.close();
+			}
+			resp.sendRedirect("/finish.html");
+		} else
+			resp.sendRedirect("/add2a.html");
 	}
 }

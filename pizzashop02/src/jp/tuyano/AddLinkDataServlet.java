@@ -3,10 +3,13 @@ package jp.tuyano;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
+import java.util.regex.*;
 
 import javax.jdo.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
+
+import com.sun.org.apache.xerces.internal.impl.xs.identity.Selector.Matcher;
 
 public class AddLinkDataServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -22,11 +25,18 @@ public class AddLinkDataServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
+		boolean flag=true;
 		String title = req.getParameter("title");
-		String count = req.getParameter("count"); // 変更
+		if(title.equals(""))flag=false;
+		String count = req.getParameter("count");
+		if(count.equals(""))flag=false;
 		String ad3 = req.getParameter("address");
+		if(count.equals(""))flag=false;
 		String ad1 = req.getParameter("address1");
+		if(count.equals(""))flag=false;
 		String ad2 = req.getParameter("address2");
+		if(count.equals(""))flag=false;
+		String topping = req.getParameter("topping");
 		if (ad1.equals("東京都")) {
 			if (ad2.equals("1"))
 				ad2 = "小平市";
@@ -69,11 +79,11 @@ public class AddLinkDataServlet extends HttpServlet {
 			else if (ad2.equals("6"))
 				ad2 = "満濃町";
 		}
-
 		String address = ad1 + ad2 + ad3;
 		Date date = Calendar.getInstance().getTime();
 		String price = req.getParameter("price");
 		String phone = req.getParameter("phone");
+		if(phone.equals(""))flag=false;
 		String haitatsu = "×";
 		int price2 = Integer.parseInt(price);
 		int count2 = Integer.parseInt(count);
@@ -81,15 +91,21 @@ public class AddLinkDataServlet extends HttpServlet {
 		price3 = price2 * count2;
 		price = Integer.toString(price3);
 		String pay = req.getParameter("pay");
-		LinkData data = new LinkData(title, count, address, date, price, phone,
-				haitatsu, pay);
-		PersistenceManagerFactory factory = PMF.get();
-		PersistenceManager manager = factory.getPersistenceManager();
-		try {
-			manager.makePersistent(data);
-		} finally {
-			manager.close();
-		}
-		resp.sendRedirect("/finish.html");
+		if (flag) {
+			LinkData data = new LinkData(title, count, address, date, price,
+					phone, haitatsu, pay, topping);
+			PersistenceManagerFactory factory = PMF.get();
+			PersistenceManager manager = factory.getPersistenceManager();
+			try {
+				manager.makePersistent(data);
+			} finally {
+				manager.close();
+			}
+			if (pay.equals("カード"))
+				resp.sendRedirect("/card.html");
+			else
+				resp.sendRedirect("/finish.html");			
+		} else
+			resp.sendRedirect("/adda.html");
 	}
 }

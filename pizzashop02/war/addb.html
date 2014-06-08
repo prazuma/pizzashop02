@@ -4,6 +4,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>注文画面</title>
 
+<script type="text/javascript">
+window.onunload = function(){};
+history.forward();
+</script>
 <script type="text/javascript" src=lib.js"></script>
 <script>
 	//東京の配列
@@ -53,9 +57,16 @@ body {
 }
 -->
 </style>
+
+
 <body>
+
+
+
+
 	<CENTER>
 		<h1>注文画面</h1>
+		<font color="red">電話番号は半角数字のみで入力してくだい</font>
 		<table>
 			<form method="post" action="/add" name="selbox">
 				<tr>

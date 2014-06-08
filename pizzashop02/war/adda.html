@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>注文画面</title>
 
+
 <script type="text/javascript" src=lib.js"></script>
 <script>
 	//東京の配列
@@ -56,6 +57,7 @@ body {
 <body>
 	<CENTER>
 		<h1>注文画面</h1>
+		<font color="red">未入力の項目があります</font>
 		<table>
 			<form method="post" action="/add" name="selbox">
 				<tr>
@@ -82,7 +84,7 @@ body {
 				</tr>
 				</tr>
 				<tr>
-					<th>電話番号：(ハイフンなし)</th>
+					<th>電話番号：</th>
 					<td><input type="text" name="phone"></td>
 				</tr>
 				<tr>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>カード情報入力</title>
+
+</head>
+<style type="text/css">
+<!--
+body {
+	background-color: #ffffff;
+	background-image: url(pizza.jpeg);
+	background-position: right bottom;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+-->
+</style>
+
+<body>
+	<CENTER>
+		<h1>カードを情報入力してください。全て必須項目です。</h1>
+		<font color="red">半角数字で入力してくだい</font>
+		<table>
+			<form method="post" action="/card" name="selbox">
+				<tr>
+					<th>名義人名：</th>
+					<td><input type="text" name="name"></td>
+				</tr>
+				<tr>
+					<th>カード会社：</th>
+					<td><select name="card">
+							<option value="">*会社選択</option>
+							<option value="VISA">VISA</option>
+							<option value="UCB">UCB</option>
+							<option value="AMERICAN EXPRESS">AMERICAN</option>
+					</select></td>
+				</tr>
+			<tr>
+				<th>カード番号：</th>
+				<td><input type="text" name="number1">-</td>
+				<td><input type="text" name="number2">-</td>
+				<td><input type="text" name="number3">-</td>
+				<td><input type="text" name="number4"></td>
+			</tr>
+			<tr>
+				<th>セキュリティ番号:</th>
+				<td><input type="text" name="security"></td>
+			</tr>
+			<tr>
+				<th>有効期限:</th>
+				<td><input type="text" name="month">月/</td>
+				<td><input type="text" name="year">年</td>
+			</tr>
+			<th></th>
+			<td><input type="submit" value="登録"></td>
+			</form>
+		</table>
+		<br> <br>
+		<div>
+			<a href="index.html">topに戻る</a>
+		</div>
+	</CENTER>
+</body>
+</html>
