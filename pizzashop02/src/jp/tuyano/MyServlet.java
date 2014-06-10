@@ -20,11 +20,11 @@ public class MyServlet extends HttpServlet {
             resp.getWriter().println("<p>Hello, " +
                                      req.getUserPrincipal().getName() +
                                      "!  You can <a href=\"" +
-                                     userService.createLogoutURL(thisURL) +
+                                     userService.createLogoutURL("/Login.html") +
                                      "\">sign out</a>.</p>");
         } else {
             resp.getWriter().println("<p>Please <a href=\"" +
-                                     userService.createLoginURL(thisURL) +
+                                     userService.createLoginURL("/index.html") +
                                      "\">sign in</a>.</p>");
         }
     }

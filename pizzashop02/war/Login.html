@@ -5,6 +5,10 @@
         <meta http-equiv="Content-Type"
             content="text/html; charset=utf-8">
         <title>PizzaShopログインページ</title>
+        <script type="text/javascript">
+window.onunload = function(){};
+history.forward();
+</script>
     </head>
     <style type="text/css">
 <!--
@@ -19,10 +23,12 @@ body {
 </style>
     <body>
     <CENTER>
-        <h1>PizzaShopログインページ</h1>g
+        <h1>PizzaShopログインページ</h1>
         <div>以下googleアカウントが必要になります</div>
         <br>
-        <a href="/index.html">ログインしてPizzaShopページへいく</a>
+        <form method="get" action="/login">
+        <input type="submit" value="ログインする">
+        </form>
      </CENTER>
     </body>
 </html>
